@@ -1,38 +1,11 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
 
-import Search from './search';
-import ArtistList from './artists_list'
+import HomeContainer from '../containers/home_container';
 
-class Home extends Component {
-    state = {
-        artist: []
-    }
-
-    componentWillMount(){
-        axios.get("http://localhost:3004/artists")
-        .then(response => {
-            this.setState({
-                artist: response.data
-            })
-        })
-    }
-
-    getKeyword = (event) => {
-        let key = event.target.value;
-        console.log(key);
-    }
-
-
-    render() {
-        const {artist} = this.state
-        return (
-            <div>
-                <Search keywords={this.getKeyword}/>
-                <ArtistList artists={artist}/> 
-            </div>
-        );
-    }
+const Home = () => {
+    return(
+        <HomeContainer/>
+    )
 }
 
-export default Home;
+export default Home
